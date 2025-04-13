@@ -28,10 +28,11 @@ export const getNowPlaying = async (token) => {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    const data = await response.json();
     if (response.status === 204) {
       return null; // No track is currently playing
-    } else if (response.status === 200) {
+    }
+    if (response.status === 200) {
+      const data = await response.json();
       return data;
     } else {
       throw data.error;
