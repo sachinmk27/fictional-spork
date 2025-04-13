@@ -25,7 +25,10 @@ router.get("/", async (req, res, next) => {
     const topTracks = await getTopTracks(token);
     const nowPlaying = await getNowPlaying(token);
 
-    res.json({ nowPlaying, topTracks });
+    res.json({
+      topTracks,
+      nowPlaying,
+    });
   } catch (error) {
     next(error);
   }
